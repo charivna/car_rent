@@ -73,6 +73,7 @@ export const Catalog = () => {
                 ))}
               </ul>
               <p>Rental Conditions: {car.rentalConditions}</p>
+              <button>Learn More</button>
             </div>
           ))}
         </div>
