@@ -1,7 +1,6 @@
 // Catalog.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { nanoid } from 'nanoid';
 import CarCard from 'components/CarCard/CarCard';
 import { Container, List } from './Catalog.styled';
 
@@ -39,10 +38,11 @@ export const Catalog = () => {
       ) : (
         <List>
           {cars.map(car => (
-            <CarCard key={nanoid()} car={car} />
+            <CarCard key={car.id} car={car} />
           ))}
         </List>
       )}
+      <button>Load more</button>
     </Container>
   );
 };
