@@ -9,9 +9,11 @@ import {
   MoreButton,
 } from './CarCard.styled';
 import { useState } from 'react';
+import { Modal } from 'components/Modal/Modal';
 
 const CarCard = ({ car }) => {
   const [likedCars, setLikedCars] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleHeartToggle = (carId, isLiked) => {
     setLikedCars(prevLikedCars => {
@@ -24,6 +26,15 @@ const CarCard = ({ car }) => {
       }
     });
   };
+
+  const handleLearnMoreClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
   const isCarLiked = likedCars.includes(car.id);
 
   return (
@@ -52,7 +63,8 @@ const CarCard = ({ car }) => {
           car.rentalCompany
         } | ${car.type} | ${car.id} | ${car.accessories[0]}`}
       </Info>
-      <MoreButton>Learn More</MoreButton>
+      <MoreButton onClick={handleLearnMoreClick}>Learn More</MoreButton>
+      {isModalOpen && <Modal onClose={handleModalClose} car={car} />}
     </Card>
   );
 };
