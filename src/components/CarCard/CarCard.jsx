@@ -1,7 +1,23 @@
 import Heart from 'components/Heart/Heart';
 import { Card, ImageContainer } from './CarCard.styled';
+import { useState } from 'react';
 
 const CarCard = ({ car }) => {
+  const [likedCars, setLikedCars] = useState([]);
+
+  const handleHeartToggle = (carId, isLiked) => {
+    setLikedCars(prevLikedCars => {
+      if (isLiked) {
+        // Додаємо автомобіль до списку обраних, якщо він був видалений раніше
+        return [...prevLikedCars, carId];
+      } else {
+        // Видаляємо автомобіль зі списку обраних, якщо він вже був там
+        return prevLikedCars.filter(id => id !== carId);
+      }
+    });
+  };
+  const isCarLiked = likedCars.includes(car.id);
+
   return (
     <Card
       key={car.id}
@@ -11,7 +27,7 @@ const CarCard = ({ car }) => {
         borderRadius: '5px',
       }}
     >
-      <Heart />
+      <Heart carId={car.id} onToggle={handleHeartToggle} isLiked={isCarLiked} />
       <ImageContainer>
         <img
           src={car.img}
