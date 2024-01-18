@@ -1,3 +1,5 @@
+import { Label, Option, Select } from './DropdownBrand.styled';
+
 export const DropdownBrand = ({ options, onSelect }) => {
   const handleSelectChange = event => {
     const selectedBrand = event.target.value;
@@ -6,15 +8,15 @@ export const DropdownBrand = ({ options, onSelect }) => {
 
   return (
     <div>
-      <label>Car brand</label>
-      <select onChange={handleSelectChange}>
-        <option value="">Enter the text</option>
+      <Label>Car brand</Label>
+      <Select onChange={handleSelectChange}>
+        <Option value="">Enter the text</Option>
         {options.map((brand, index) => (
           <option key={index} value={brand}>
             {brand}
           </option>
         ))}
-      </select>
+      </Select>
     </div>
   );
 };

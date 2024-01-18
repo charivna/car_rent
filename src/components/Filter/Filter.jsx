@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import DropdownPrice from 'components/DropdownPrice/DropdownPrice';
 import RangeFilter from 'components/RangeFilter/RangeFilter';
+import { AllFilter, SearchBtn } from './Filter.styled';
 
 export const Filter = () => {
   const [brandOptions, setBrandOptions] = useState([]);
@@ -52,14 +53,14 @@ export const Filter = () => {
   };
 
   return (
-    <>
+    <AllFilter>
       <DropdownBrand options={brandOptions} onSelect={handleBrandSelect} />
       <DropdownPrice onChange={handlePriceSelect} />
       <RangeFilter
         onFilterChange={handleRangeFilterChange}
         onApplyFilters={handleApplyFilters}
       />
-      <button onClick={handleApplyFilters}>Apply Filters</button>
-    </>
+      <SearchBtn onClick={handleApplyFilters}>Search</SearchBtn>
+    </AllFilter>
   );
 };

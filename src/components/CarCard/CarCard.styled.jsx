@@ -68,12 +68,11 @@ export const MoreButton = styled(NavLink)`
   height: 44px;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+
   background-color: #3470ff;
   transition: box-shadow 0.3s ease;
   cursor: pointer;
   &:hover {
-    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
     background-color: #0b44cd;
   }
 `;

@@ -1,4 +1,3 @@
-// Catalog.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CarCard from 'components/CarCard/CarCard';
@@ -31,8 +30,6 @@ export const Catalog = () => {
 
   return (
     <Container>
-      <h2>Catalog</h2>
-
       {loading ? (
         <p>Завантаження...</p>
       ) : (

@@ -1,3 +1,5 @@
+import { Label, Option, Select } from './DropdownPrice.styled';
+
 const DropdownPrice = ({ onChange }) => {
   const generatePriceOptions = () => {
     const options = [];
@@ -14,15 +16,15 @@ const DropdownPrice = ({ onChange }) => {
 
   return (
     <div>
-      <label>Price/ 1 hour</label>
-      <select onChange={handleSelectChange}>
-        <option value="">To $</option>
+      <Label>Price/ 1 hour</Label>
+      <Select onChange={handleSelectChange}>
+        <Option value="">To $</Option>
         {generatePriceOptions().map((price, index) => (
           <option key={index} value={price}>
             ${price}
           </option>
         ))}
-      </select>
+      </Select>
     </div>
   );
 };
