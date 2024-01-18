@@ -1,5 +1,13 @@
 import Heart from 'components/Heart/Heart';
-import { Card, ImageContainer } from './CarCard.styled';
+import {
+  Card,
+  ImageContainer,
+  Tittle,
+  Type,
+  Price,
+  Info,
+  MoreButton,
+} from './CarCard.styled';
 import { useState } from 'react';
 
 const CarCard = ({ car }) => {
@@ -23,8 +31,7 @@ const CarCard = ({ car }) => {
       key={car.id}
       style={{
         position: 'relative',
-        border: '1px solid #ddd',
-        borderRadius: '5px',
+        height: '426px',
       }}
     >
       <Heart carId={car.id} onToggle={handleHeartToggle} isLiked={isCarLiked} />
@@ -35,16 +42,17 @@ const CarCard = ({ car }) => {
           style={{ maxWidth: '100%', height: '100%', objectFit: 'cover' }}
         />
       </ImageContainer>
+      <Tittle>
+        <Type>{` ${car.make} ${car.model}, ${car.year}`} </Type>
+        <Price>{`${car.rentalPrice}`}</Price>
+      </Tittle>
 
-      <h3>{` ${car.make} ${car.model} ${car.year} ${car.rentalPrice}`}</h3>
-
-      <p>
+      <Info>
         {`${car.address.split(',').slice(-2).join(', ')} | ${
           car.rentalCompany
-        }|${car.type}|${car.id}|${car.accessories[0]}`}
-      </p>
-
-      <button>Learn More</button>
+        } | ${car.type} | ${car.id} | ${car.accessories[0]}`}
+      </Info>
+      <MoreButton>Learn More</MoreButton>
     </Card>
   );
 };
