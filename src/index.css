@@ -47,6 +47,12 @@ body {
   color: #121417;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+.modal-open {
+  overflow: hidden;
+}
 h1,
 h2,
 h3,

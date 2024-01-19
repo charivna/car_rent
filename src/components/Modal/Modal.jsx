@@ -22,7 +22,9 @@ import {
 export const Modal = ({ isOpen, onClose, car }) => {
   useEffect(() => {
     const handleKeyPress = e => {
-      onClose();
+      if (e.code === 'Escape') {
+        onClose();
+      }
     };
 
     document.addEventListener('keydown', handleKeyPress);
@@ -31,7 +33,21 @@ export const Modal = ({ isOpen, onClose, car }) => {
       document.removeEventListener('keydown', handleKeyPress);
     };
   }, [onClose]);
-  if (isOpen) return null;
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('modal-open');
+      document.documentElement.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+      document.documentElement.classList.remove('modal-open');
+    }
+
+    return () => {
+      document.body.classList.remove('modal-open');
+      document.documentElement.classList.remove('modal-open');
+    };
+  }, [isOpen, onClose]);
 
   const rentalConditionsString = car.rentalConditions || '';
 

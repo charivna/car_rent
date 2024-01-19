@@ -43,5 +43,3 @@ export const Catalog = () => {
     </Container>
   );
 };
-
-export default Catalog;
