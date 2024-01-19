@@ -6,17 +6,18 @@ import { Container, List } from './Catalog.styled';
 export const Catalog = () => {
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const fetchCars = async () => {
+    const fetchData = async () => {
       try {
-        // Ваш URL для запиту до бекенду
+        setLoading(true);
+
         const response = await axios.get(
-          'https://65a7bc4794c2c5762da7693e.mockapi.io/catalog'
+          `https://65a7bc4794c2c5762da7693e.mockapi.io/catalog?page=${currentPage}&limit=12`
         );
 
-        // Оновлюємо стан компонента з отриманими даними
-        setCars(response.data);
+        setCars(prevCars => [...prevCars, ...response.data]);
         setLoading(false);
       } catch (error) {
         console.error('Помилка запиту:', error);
@@ -24,9 +25,12 @@ export const Catalog = () => {
       }
     };
 
-    // Викликаємо функцію для отримання карточок при завантаженні компонента
-    fetchCars();
-  }, []); // Порожній масив для запобігання безкінечного циклу
+    fetchData();
+  }, [currentPage]);
+
+  const handleLoadMore = () => {
+    setCurrentPage(prevPage => prevPage + 1);
+  };
 
   return (
     <Container>
@@ -39,7 +43,7 @@ export const Catalog = () => {
           ))}
         </List>
       )}
-      <button>Load more</button>
+      <button onClick={handleLoadMore}>Load more</button>
     </Container>
   );
 };
