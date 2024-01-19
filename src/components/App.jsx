@@ -1,11 +1,10 @@
-// import { Catalog } from './Catalog/Catalog';
-// import { Filter } from './Filter/Filter';
-
-import CatalogPage from 'pages/CatalogPage';
-import FavoritePage from 'pages/FavoritePage';
-import HomePage from 'pages/HomePage';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout/Layout';
+import { lazy } from 'react';
+
+const HomePage = lazy(() => import('pages/HomePage'));
+const CatalogPage = lazy(() => import('pages/CatalogPage'));
+const FavoritePage = lazy(() => import('pages/FavoritePage'));
 
 export const App = () => {
   return (
