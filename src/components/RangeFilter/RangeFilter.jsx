@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { InputFrom, InputTo, Label, Range } from './RangeFilter.styled';
 
-const RangeFilter = ({ onFilterChange, onApplyFilters }) => {
+const RangeFilter = () => {
   const [fromValue, setFromValue] = useState('');
   const [toValue, setToValue] = useState('');
 

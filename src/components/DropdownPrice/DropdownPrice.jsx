@@ -11,7 +11,7 @@ const DropdownPrice = ({ onChange }) => {
 
   const handleSelectChange = event => {
     const selectedPrice = event.target.value;
-    onChange(selectedPrice);
+    return selectedPrice;
   };
 
   return (

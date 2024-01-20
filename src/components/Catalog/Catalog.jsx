@@ -1,36 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import CarCard from 'components/CarCard/CarCard';
 import { Container, List } from './Catalog.styled';
+import {
+  setCars,
+  appendCars,
+  setLoading,
+  setCurrentPage,
+} from '../../redux/Catalog/catalogSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCars } from '../../services/api';
 
 export const Catalog = () => {
-  const [cars, setCars] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
+  const dispatch = useDispatch();
+  const { cars, loading, currentPage } = useSelector(state => state.catalog);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
+        dispatch(setLoading(true));
 
-        const response = await axios.get(
-          `https://65a7bc4794c2c5762da7693e.mockapi.io/catalog?page=${currentPage}&limit=12`
-        );
+        const data = await fetchCars(currentPage);
 
-        setCars(prevCars => [...prevCars, ...response.data]);
-        setLoading(false);
+        if (currentPage === 1) {
+          dispatch(setCars(data));
+        } else {
+          dispatch(appendCars(data));
+        }
+
+        dispatch(setLoading(false));
       } catch (error) {
-        console.error('Помилка запиту:', error);
-        setLoading(false);
+        // Ошибка уже обработана внутри функции fetchCars
+        dispatch(setLoading(false));
       }
     };
 
     fetchData();
-  }, [currentPage]);
-
-  const handleLoadMore = () => {
-    setCurrentPage(prevPage => prevPage + 1);
-  };
+  }, [currentPage, dispatch]);
 
   return (
     <Container>
@@ -43,7 +48,12 @@ export const Catalog = () => {
           ))}
         </List>
       )}
-      <button onClick={handleLoadMore}>Load more</button>
+
+      {cars.length >= 12 && (
+        <button onClick={() => dispatch(setCurrentPage(currentPage + 1))}>
+          Load more
+        </button>
+      )}
     </Container>
   );
 };
