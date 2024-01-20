@@ -5,7 +5,7 @@ import DropdownPrice from 'components/DropdownPrice/DropdownPrice';
 import RangeFilter from 'components/RangeFilter/RangeFilter';
 import { AllFilter, SearchBtn } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSelectedBrand } from '../../redux/Filter/filterSlice';
+import { resetFilters, setSelectedBrand } from '../../redux/Filter/filterSlice';
 import { selectSelectedBrand } from '../../redux/Filter/filterSelectors';
 import { filterCarsByBrand } from 'services/api';
 import { updateCars } from '../../redux/Catalog/catalogSlice';
@@ -69,15 +69,20 @@ export const Filter = () => {
     } catch (error) {
       // Обработка ошибки
       console.error('Помилка при фільтрації даних про автомобілі:', error);
+    } finally {
+      // Сбросить фильтры после завершения операции
+      dispatch(resetFilters());
     }
   };
 
   return (
-    <AllFilter>
-      <DropdownBrand options={brandOptions} onSelect={handleBrandSelect} />
-      <DropdownPrice />
-      <RangeFilter />
-      <SearchBtn onClick={handleApplyFilters}>Search</SearchBtn>
-    </AllFilter>
+    <>
+      <AllFilter>
+        <DropdownBrand options={brandOptions} onSelect={handleBrandSelect} />
+        <DropdownPrice />
+        <RangeFilter />
+        <SearchBtn onClick={handleApplyFilters}>Search</SearchBtn>
+      </AllFilter>
+    </>
   );
 };

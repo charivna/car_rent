@@ -5,7 +5,7 @@ export const AllFilter = styled.div`
   display: flex;
   max-width: 1440px;
   padding: 0 115px;
-  padding-top: 150px;
+  padding-top: 20px;
   align-items: center;
   justify-content: center;
   margin-bottom: 64px;

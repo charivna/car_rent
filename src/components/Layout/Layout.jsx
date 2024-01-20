@@ -1,23 +1,26 @@
 import { Suspense } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { ListNav, Nav, StyledLink } from './Layout.styled';
 
 const Layout = () => {
   return (
     <>
       <header>
-        <nav>
-          <li>
-            <NavLink to="/"> Home Page </NavLink>{' '}
-          </li>
+        <Nav>
+          <ListNav>
+            <li>
+              <StyledLink to="/"> Home Page </StyledLink>{' '}
+            </li>
 
-          <li>
-            <NavLink to="/catalog"> Catalog </NavLink>
-          </li>
+            <li>
+              <StyledLink to="/catalog"> Catalog </StyledLink>
+            </li>
 
-          <li>
-            <NavLink to="favorites"> Favorites </NavLink>
-          </li>
-        </nav>
+            <li>
+              <StyledLink to="favorites"> Favorites </StyledLink>
+            </li>
+          </ListNav>
+        </Nav>
       </header>
 
       <main>

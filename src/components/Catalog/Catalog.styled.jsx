@@ -9,6 +9,7 @@ export const Container = styled.div`
 `;
 
 export const List = styled.ul`
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
   margin-left: auto;
