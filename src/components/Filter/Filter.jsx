@@ -65,6 +65,7 @@ export const Filter = () => {
       const filteredCars = await filterCarsByBrand(selectedBrand);
       dispatch(updateCars(filteredCars));
       console.log('Відфільтровані дані про автомобілі:', filteredCars);
+      dispatch(setSelectedBrand(''));
       // Обновление состояния с данными о машинах на фронте, если необходимо
     } catch (error) {
       // Обработка ошибки

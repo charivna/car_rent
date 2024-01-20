@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import CarCard from 'components/CarCard/CarCard';
-import { Container, List } from './Catalog.styled';
+import { Container, List, MoreBtn } from './Catalog.styled';
 import {
   setCars,
   appendCars,
@@ -50,9 +50,9 @@ export const Catalog = () => {
       )}
 
       {cars.length >= 12 && (
-        <button onClick={() => dispatch(setCurrentPage(currentPage + 1))}>
+        <MoreBtn onClick={() => dispatch(setCurrentPage(currentPage + 1))}>
           Load more
-        </button>
+        </MoreBtn>
       )}
     </Container>
   );

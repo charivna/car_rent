@@ -11,6 +11,9 @@ const filterSlice = createSlice({
     setSelectedBrand: (state, action) => {
       state.selectedBrand = action.payload;
     },
+    resetFilters: state => {
+      state.selectedBrand = '';
+    },
   },
 });
 

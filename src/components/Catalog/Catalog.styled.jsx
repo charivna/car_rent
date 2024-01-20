@@ -17,3 +17,18 @@ export const List = styled.ul`
   gap: 29px;
   padding: 0;
 `;
+
+export const MoreBtn = styled.button`
+  color: #3470ff;
+  display: flex;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 100px;
+
+  font-size: 16px;
+  background-color: transparent;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration-line: underline;
+`;
