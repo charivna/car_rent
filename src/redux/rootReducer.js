@@ -1,11 +1,12 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import { catalogReducer } from './Catalog/catalogSlice';
 import filterReducer from './Filter/filterSlice';
-// Замініть шлях на ваш шлях до catalogSlice
+import favoritesReducer from '../redux/FavoriteSlice/favoriteSlice';
 
 const rootReducer = combineReducers({
   catalog: catalogReducer,
   filter: filterReducer,
+  favorites: favoritesReducer,
 });
 
 export default rootReducer;

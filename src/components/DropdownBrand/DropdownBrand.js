@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Label, Option, Select } from './DropdownBrand.styled';
-import { selectSelectedBrand } from '../../redux/Filter/filterSelectors';
 import { setSelectedBrand } from '../../redux/Filter/filterSlice';
 
 export const DropdownBrand = ({ options }) => {
   const dispatch = useDispatch();
-  const selectedBrand = useSelector(selectSelectedBrand);
+  const selectedBrand = useSelector(state => state.filter.selectedBrand);
 
   const handleSelectChange = event => {
     const brand = event.target.value;

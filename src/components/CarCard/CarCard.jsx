@@ -10,21 +10,18 @@ import {
 } from './CarCard.styled';
 import { useState } from 'react';
 import { Modal } from 'components/Modal/Modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleLikedCar } from '../../redux/FavoriteSlice/favoriteSlice';
 
 const CarCard = ({ car }) => {
-  const [likedCars, setLikedCars] = useState([]);
+  const dispatch = useDispatch();
+  const isCarLiked = useSelector(state =>
+    state.favorites.likedCars.includes(car.id)
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleHeartToggle = (carId, isLiked) => {
-    setLikedCars(prevLikedCars => {
-      if (isLiked) {
-        // Додаємо автомобіль до списку обраних, якщо він був видалений раніше
-        return [...prevLikedCars, carId];
-      } else {
-        // Видаляємо автомобіль зі списку обраних, якщо він вже був там
-        return prevLikedCars.filter(id => id !== carId);
-      }
-    });
+  const handleHeartToggle = () => {
+    dispatch(toggleLikedCar(car.id));
   };
 
   const handleLearnMoreClick = () => {
@@ -34,8 +31,6 @@ const CarCard = ({ car }) => {
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
-
-  const isCarLiked = likedCars.includes(car.id);
 
   return (
     <Card
@@ -59,9 +54,9 @@ const CarCard = ({ car }) => {
       </Tittle>
 
       <Info>
-        {`${car.address.split(',').slice(-2).join(', ')} | ${
-          car.rentalCompany
-        } | ${car.type} | ${car.id} | ${car.accessories[0]}`}
+        {car.address && car.address.split(',').slice(-2).join(', ')} |{' '}
+        {car.rentalCompany} | {car.type} | {car.id} |{' '}
+        {car.accessories && car.accessories[0]}
       </Info>
       <MoreButton onClick={handleLearnMoreClick}>Learn More</MoreButton>
       {isModalOpen && <Modal onClose={handleModalClose} car={car} />}

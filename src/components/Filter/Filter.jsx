@@ -6,14 +6,14 @@ import RangeFilter from 'components/RangeFilter/RangeFilter';
 import { AllFilter, SearchBtn } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedBrand } from '../../redux/Filter/filterSlice';
-import { selectSelectedBrand } from '../../redux/Filter/filterSelectors';
+
 import { filterCarsByBrand } from 'services/api';
 import { updateCars } from '../../redux/Catalog/catalogSlice';
 
 export const Filter = () => {
   const [brandOptions, setBrandOptions] = useState([]);
 
-  const selectedBrand = useSelector(selectSelectedBrand);
+  const selectedBrand = useSelector(state => state.filter.selectedBrand);
 
   const dispatch = useDispatch();
 
