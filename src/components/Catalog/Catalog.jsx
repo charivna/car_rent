@@ -29,7 +29,6 @@ export const Catalog = () => {
 
         dispatch(setLoading(false));
       } catch (error) {
-        // Ошибка уже обработана внутри функции fetchCars
         dispatch(setLoading(false));
       }
     };

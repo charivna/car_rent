@@ -1,5 +1,12 @@
 import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+
+import styled, { createGlobalStyle } from 'styled-components';
+
+export const GlobalStyles = createGlobalStyle`
+  body.modal-open {
+    overflow: hidden;
+  }
+`;
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -15,6 +22,7 @@ export const Backdrop = styled.div`
 `;
 
 export const ModalWindow = styled.div`
+  height: 100%;
   position: relative;
   box-sizing: border-box;
   width: 541px;
@@ -140,7 +148,7 @@ export const RentalButton = styled(NavLink)`
   justify-content: center;
   height: 44px;
   margin-top: 24px;
-  margin-bottom: 40px;
+
   background-color: #3470ff;
   transition: box-shadow 0.3s ease;
   cursor: pointer;

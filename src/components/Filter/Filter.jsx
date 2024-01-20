@@ -32,18 +32,11 @@ export const Filter = () => {
 
   const handleBrandSelect = async brand => {
     dispatch(setSelectedBrand(brand));
-    console.log('Вибрано бренд:', brand);
 
     try {
-      // Вызываем функцию filterCarsByBrand из другого файла
       const filteredCars = await filterCarsByBrand(brand);
-
-      // Обновление состояния с отфильтрованными данными о машинах на фронте
-      // setFilteredCars(filteredCars);
       dispatch(updateCars(filteredCars));
-      console.log('Дані про відфільтровані автомобілі:', filteredCars);
     } catch (error) {
-      // Обработка ошибки
       console.error(
         'Помилка при отриманні даних про відфільтровані автомобілі:',
         error
@@ -52,23 +45,11 @@ export const Filter = () => {
   };
 
   const handleApplyFilters = async () => {
-    // Отримання та відправлення зібраних даних на бекенд
-    const filtersData = {
-      brand: selectedBrand,
-    };
-
-    // Ваш код для відправлення даних на бекенд
-    console.log('Відправлення на бекенд:', filtersData);
-
-    // Фильтрация данных на бекенде
     try {
       const filteredCars = await filterCarsByBrand(selectedBrand);
       dispatch(updateCars(filteredCars));
-      console.log('Відфільтровані дані про автомобілі:', filteredCars);
       dispatch(setSelectedBrand(''));
-      // Обновление состояния с данными о машинах на фронте, если необходимо
     } catch (error) {
-      // Обработка ошибки
       console.error('Помилка при фільтрації даних про автомобілі:', error);
     }
   };

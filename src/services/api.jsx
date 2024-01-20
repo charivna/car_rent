@@ -11,7 +11,7 @@ export const fetchCars = async (page = 1, limit = 12) => {
     return response.data;
   } catch (error) {
     console.error('Помилка запиту:', error);
-    throw error; // Переброс ошибки для обработки в компоненте
+    throw error;
   }
 };
 
@@ -22,6 +22,6 @@ export const filterCarsByBrand = async brand => {
     return response.data;
   } catch (error) {
     console.error('Помилка фільтрації автомобілів за брендом:', error);
-    throw error; // Переброс ошибки для обработки в компоненте
+    throw error;
   }
 };

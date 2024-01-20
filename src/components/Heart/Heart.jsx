@@ -5,7 +5,6 @@ import activeHeart from '../../common/active.png';
 const Heart = ({ carId, onToggle, isLiked }) => {
   const toggleLike = () => {
     onToggle && onToggle(carId, !isLiked);
-    console.log(carId);
   };
 
   return (

@@ -15,9 +15,11 @@ import { toggleLikedCar } from '../../redux/FavoriteSlice/favoriteSlice';
 
 const CarCard = ({ car }) => {
   const dispatch = useDispatch();
+
   const isCarLiked = useSelector(state =>
     state.favorites.likedCars.includes(car.id)
   );
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleHeartToggle = () => {

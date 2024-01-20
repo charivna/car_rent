@@ -9,6 +9,7 @@ import {
   Condition,
   Description,
   FlexWrap,
+  GlobalStyles,
   ImageContainer,
   Info,
   ModalWindow,
@@ -34,80 +35,68 @@ export const Modal = ({ isOpen, onClose, car }) => {
     };
   }, [onClose]);
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.classList.add('modal-open');
-      document.documentElement.classList.add('modal-open');
-    } else {
-      document.body.classList.remove('modal-open');
-      document.documentElement.classList.remove('modal-open');
-    }
-
-    return () => {
-      document.body.classList.remove('modal-open');
-      document.documentElement.classList.remove('modal-open');
-    };
-  }, [isOpen, onClose]);
-
   const rentalConditionsString = car.rentalConditions || '';
 
   const rentalConditionsArray = rentalConditionsString.split('\n');
 
   return (
-    <Backdrop onClick={onClose}>
-      <ModalWindow onClick={e => e.stopPropagation()}>
-        <ImageContainer>
-          <img
-            src={car.img}
-            alt={car.make}
-            style={{ maxWidth: '100%', height: '100%', objectFit: 'cover' }}
-          />
-        </ImageContainer>
+    <>
+      <GlobalStyles />
+      <Backdrop onClick={onClose}>
+        <ModalWindow onClick={e => e.stopPropagation()}>
+          <ImageContainer>
+            <img
+              src={car.img}
+              alt={car.make}
+              style={{ maxWidth: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          </ImageContainer>
 
-        <Tittle>
-          {`${car.make}`}
-          <Model> {`${car.model}`} </Model>
-          {`${car.year}`}
-        </Tittle>
+          <Tittle>
+            {`${car.make}`}
+            <Model> {`${car.model}`} </Model>
+            {`${car.year}`}
+          </Tittle>
 
-        <Info>
-          {`${car.address.split(',').slice(-2).join(', ')} | ${
-            car.rentalCompany
-          } | ${car.type} | ${car.id} | ${car.accessories[0]}`}
-        </Info>
+          <Info>
+            {`${car.address.split(',').slice(-2).join(', ')} | ${
+              car.rentalCompany
+            } | ${car.type} | ${car.id} | ${car.accessories[0]}`}
+          </Info>
 
-        <Description>{`${car.description}`}</Description>
-        <Accessories>Accessories and functionalities:</Accessories>
+          <Description>{`${car.description}`}</Description>
+          <Accessories>Accessories and functionalities:</Accessories>
 
-        <AccessoriesDetail>
-          {car.accessories.map((accessory, index) => (
-            <p key={index}>{accessory} | </p>
-          ))}
-        </AccessoriesDetail>
-        <Rental>Rental Conditions: </Rental>
-        <FlexWrap>
-          {rentalConditionsArray.map((condition, index) => (
-            <Condition key={index}>{condition}</Condition>
-          ))}
-          <Condition>
-            {' '}
-            Millage:&nbsp;{' '}
-            <Value>
-              {car.mileage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-            </Value>{' '}
-          </Condition>
+          <AccessoriesDetail>
+            {car.accessories.map((accessory, index) => (
+              <p key={index}>{accessory} | </p>
+            ))}
+          </AccessoriesDetail>
+          <Rental>Rental Conditions: </Rental>
+          <FlexWrap>
+            {rentalConditionsArray.map((condition, index) => (
+              <Condition key={index}>{condition}</Condition>
+            ))}
+            <Condition>
+              {' '}
+              Millage:&nbsp;{' '}
+              <Value>
+                {car.mileage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              </Value>{' '}
+            </Condition>
 
-          <Condition>
-            Price:&nbsp; <Value> {`${car.rentalPrice}`} </Value>
-          </Condition>
-        </FlexWrap>
-        <RentalButton to="tel:+1234567890">Rental Car</RentalButton>
-        <BtnClose onClick={onClose}>
-          <svg width={12} height={12}>
-            <use href={`${icons}#icon-cross`}></use>
-          </svg>
-        </BtnClose>
-      </ModalWindow>
-    </Backdrop>
+            <Condition>
+              Price:&nbsp; <Value> {`${car.rentalPrice}`} </Value>
+            </Condition>
+          </FlexWrap>
+          <RentalButton to="tel:+1234567890">Rental Car</RentalButton>
+          <BtnClose onClick={onClose}>
+            <svg width={12} height={12}>
+              <use href={`${icons}#icon-cross`}></use>
+            </svg>
+          </BtnClose>
+        </ModalWindow>
+      </Backdrop>
+    </>
   );
 };

@@ -1,6 +1,6 @@
 import { Label, Option, Select } from './DropdownPrice.styled';
 
-const DropdownPrice = ({ onChange }) => {
+const DropdownPrice = () => {
   const generatePriceOptions = () => {
     const options = [];
     for (let price = 10; price <= 200; price += 10) {
