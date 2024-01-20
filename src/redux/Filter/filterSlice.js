@@ -11,11 +11,8 @@ const filterSlice = createSlice({
     setSelectedBrand: (state, action) => {
       state.selectedBrand = action.payload;
     },
-    resetFilters: state => {
-      state.selectedBrand = '';
-    },
   },
 });
 
-export const { setSelectedBrand, resetFilters } = filterSlice.actions;
+export const { setSelectedBrand } = filterSlice.actions;
 export default filterSlice.reducer;
