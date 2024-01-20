@@ -5,10 +5,11 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   max-width: 1440px;
-  padding: 0 115px;
+  padding: 50px 115px;
 `;
 
 export const List = styled.ul`
+  margin-bottom: 20px;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;

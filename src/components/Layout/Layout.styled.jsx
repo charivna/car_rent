@@ -7,7 +7,6 @@ export const Nav = styled.nav`
   margin-right: auto;
   max-width: 1440px;
   padding: 15px 115px;
-  margin-bottom: 16px;
   justify-content: center;
   border-bottom: 1px solid #2a363b;
 `;
