@@ -19,7 +19,7 @@ export const ModalWindow = styled.div`
   position: relative;
   box-sizing: border-box;
   width: 541px;
-  max-height: 100vh;
+  max-height: 100hv;
   overflow-y: auto;
   padding: 15px 35px;
   border-radius: 24px;
