@@ -8,7 +8,7 @@ import {
   Info,
   MoreButton,
 } from './CarCard.styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Modal } from 'components/Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleLikedCar } from '../../redux/FavoriteSlice/favoriteSlice';
@@ -21,6 +21,18 @@ const CarCard = ({ car }) => {
   );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto'; // Восстанавливаем overflow при размонтировании
+    };
+  }, [isModalOpen]);
 
   const handleHeartToggle = () => {
     dispatch(toggleLikedCar(car.id));

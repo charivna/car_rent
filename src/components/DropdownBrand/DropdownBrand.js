@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+
 import {
   DropdownButton,
   DropdownContainer,
@@ -6,6 +7,7 @@ import {
   DropdownList,
   Label,
 } from './DropdownBrand.styled';
+
 import { setSelectedBrand } from '../../redux/Filter/filterSlice';
 import { useState } from 'react';
 
@@ -26,7 +28,7 @@ export const DropdownBrand = ({ options }) => {
       <DropdownButton onClick={() => setDropdownOpen(!isDropdownOpen)}>
         {selectedBrand || 'Enter the text'}
       </DropdownButton>
-      <DropdownList isOpen={isDropdownOpen}>
+      <DropdownList $isOpen={isDropdownOpen}>
         {options.map((brand, index) => (
           <DropdownItem key={index} onClick={() => handleOptionSelect(brand)}>
             {brand}

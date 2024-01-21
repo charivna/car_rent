@@ -9,7 +9,6 @@ import {
   Condition,
   Description,
   FlexWrap,
-  GlobalStyles,
   ImageContainer,
   Info,
   ModalWindow,
@@ -41,7 +40,6 @@ export const Modal = ({ isOpen, onClose, car }) => {
 
   return (
     <>
-      <GlobalStyles />
       <Backdrop onClick={onClose}>
         <ModalWindow onClick={e => e.stopPropagation()}>
           <ImageContainer>

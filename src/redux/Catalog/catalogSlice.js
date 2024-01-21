@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   cars: [],
-  loading: true,
   currentPage: 1,
 };
 
@@ -16,9 +15,6 @@ const catalogSlice = createSlice({
     appendCars: (state, action) => {
       state.cars = [...state.cars, ...action.payload];
     },
-    setLoading: (state, action) => {
-      state.loading = action.payload;
-    },
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
@@ -28,6 +24,6 @@ const catalogSlice = createSlice({
   },
 });
 
-export const { setCars, appendCars, setLoading, setCurrentPage, updateCars } =
+export const { setCars, appendCars, setCurrentPage, updateCars } =
   catalogSlice.actions;
 export const catalogReducer = catalogSlice.reducer;

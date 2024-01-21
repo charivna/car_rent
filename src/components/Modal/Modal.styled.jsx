@@ -1,12 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-import styled, { createGlobalStyle } from 'styled-components';
-
-export const GlobalStyles = createGlobalStyle`
-  body.modal-open {
-    overflow: hidden;
-  }
-`;
+import styled from 'styled-components';
 
 export const Backdrop = styled.div`
   position: fixed;

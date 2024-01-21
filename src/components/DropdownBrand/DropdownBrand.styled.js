@@ -25,9 +25,9 @@ export const DropdownContainer = styled.div`
 `;
 
 export const DropdownButton = styled.button`
+  justify-content: space-between;
   display: flex;
   padding: 14px 89px 14px 18px;
-  justify-content: center;
   font-weight: 500;
   font-size: 18px;
   align-items: center;
@@ -56,7 +56,7 @@ export const DropdownList = styled.ul`
   max-width: 224px;
   height: 272px;
   overflow-y: auto;
-  display: ${props => (props.isOpen ? 'block' : 'none')};
+  display: ${props => (props.$isOpen ? 'block' : 'none')};
 `;
 
 export const DropdownItem = styled.li`
