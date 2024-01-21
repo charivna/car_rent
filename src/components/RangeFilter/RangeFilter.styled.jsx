@@ -9,6 +9,8 @@ export const Label = styled.p`
 `;
 
 export const InputFrom = styled.input`
+  font-weight: 500;
+  font-size: 18px;
   box-sizing: border-box;
   display: flex;
   max-width: 160px;
@@ -20,6 +22,8 @@ export const InputFrom = styled.input`
   background: #f7f7fb;
 `;
 export const InputTo = styled.input`
+  font-weight: 500;
+  font-size: 18px;
   box-sizing: border-box;
   display: flex;
   max-width: 160px;

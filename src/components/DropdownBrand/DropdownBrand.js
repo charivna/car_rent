@@ -1,27 +1,38 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Label, Option, Select } from './DropdownBrand.styled';
+import {
+  DropdownButton,
+  DropdownContainer,
+  DropdownItem,
+  DropdownList,
+  Label,
+} from './DropdownBrand.styled';
 import { setSelectedBrand } from '../../redux/Filter/filterSlice';
+import { useState } from 'react';
 
 export const DropdownBrand = ({ options }) => {
   const dispatch = useDispatch();
   const selectedBrand = useSelector(state => state.filter.selectedBrand);
 
-  const handleSelectChange = event => {
-    const brand = event.target.value;
-    dispatch(setSelectedBrand(brand));
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const handleOptionSelect = selectedOption => {
+    dispatch(setSelectedBrand(selectedOption));
+    setDropdownOpen(false);
   };
 
   return (
-    <div>
+    <DropdownContainer>
       <Label>Car brand</Label>
-      <Select value={selectedBrand} onChange={handleSelectChange}>
-        <Option value="">Enter the text</Option>
+      <DropdownButton onClick={() => setDropdownOpen(!isDropdownOpen)}>
+        {selectedBrand || 'Enter the text'}
+      </DropdownButton>
+      <DropdownList isOpen={isDropdownOpen}>
         {options.map((brand, index) => (
-          <option key={index} value={brand}>
+          <DropdownItem key={index} onClick={() => handleOptionSelect(brand)}>
             {brand}
-          </option>
+          </DropdownItem>
         ))}
-      </Select>
-    </div>
+      </DropdownList>
+    </DropdownContainer>
   );
 };

@@ -9,6 +9,8 @@ export const Label = styled.p`
 `;
 
 export const Select = styled.select`
+  font-weight: 500;
+  font-size: 18px;
   display: flex;
   width: 125px;
   padding: 14px 18px;
