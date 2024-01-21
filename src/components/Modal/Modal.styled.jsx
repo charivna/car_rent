@@ -16,7 +16,6 @@ export const Backdrop = styled.div`
 `;
 
 export const ModalWindow = styled.div`
-  height: 100%;
   position: relative;
   box-sizing: border-box;
   width: 541px;
