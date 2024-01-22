@@ -23,18 +23,20 @@ export const Tittle = styled.h1`
 `;
 
 export const SectionHero = styled.div`
+  width: 100%;
   background: url(${backgroundImage}) no-repeat center center fixed;
   background-size: cover;
 `;
 
 export const BtnReady = styled(NavLink)`
+  left: 50%;
   box-sizing: border-box;
   padding: 12px 99px;
   font-size: 18px;
   font-weight: 600;
   line-height: 1.4;
   margin-left: auto;
-
+  position: absolute;
   text-decoration: none;
   color: #121417;
   border-radius: 12px;

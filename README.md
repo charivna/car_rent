@@ -1,20 +1,26 @@
-Виконала максимально можливу версію проєкту за той час, що я мала.
+###### Car Rent Project
 
-На самому початку витратила багато часу на те, щоб зрозуміти, що я робила
-правильно, але бекенд віддавав не робочі картинки, різні ключі до них в різних
-обєктах, повторювані айді.
+Applications for finding cars for rent.
 
-Недоліки про які знаю, але, нажаль, не маю часу для їх усунення(обовязково
-займусь цим після дедлайну):
+## Project Description
 
-1. Немає іконки стрілочки, яка змінює свій напрям по кліку на селект;
-2. Селект з ціною не стилізовано(в хромі це видно тільки якщо відкрити його
-   опції, а в сафарі він стандартний браузерний), як селект з брендом, він не
-   виконує функцій, range по мілях from - to теж суто декоративний.
-3. Хрестик в модальному вікні взятий з айкомуна, тому що з тим з макету виникали
-   складнощі. Тому він жирненький.
-4. Я не зробила AcyncThunk;
-5. Було б не погано додати Loader;
-6. Minimum Age в модальному вікні не відображає число іншим кольором.
-7. Коли оновлюю фейворітс, я якому є зображення вибраних, то він чиститься, але
-   якщо зайду на каталог, потмі знову фейворітс, то з'являться.
+The attachment contains 3 pages. Home page - catalog - page of selected cars. A
+filter by car brand and a modal window with detailed information about the car
+have been implemented.
+
+## Install the project
+
+To start the project you should use:
+
+1. npm install - to download dependencies of the project
+2. npm start - to start the project
+
+## Stack of the technologies
+
+1. React
+2. Redux
+3. Axios
+4. Mock API
+5. GIT
+
+Designed by Katerina Dzhurinskaya. Enjoy using it!
